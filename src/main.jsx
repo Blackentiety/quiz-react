@@ -2,20 +2,23 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import {createBrowserRouter, RouterProvider} from "react-router";
+import HomePage from "./pages/HomePage.jsx";
+import QuizPage from "./pages/QuizPage.jsx";
+import ScorePage from "./pages/ScorePage.jsx";
 
 const router = createBrowserRouter(
     [
         {
             path: '/',
-            Component: ()
+            Component: HomePage
         },
         {
             path: '/quiz',
-            Component: () => ()
+            Component: QuizPage
         },
         {
             path: '/score',
-            Component: () => ()
+            Component: ScorePage
         }
     ]
 )
