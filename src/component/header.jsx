@@ -1,4 +1,4 @@
-import {Likn} from 'react-router'
+import {Link} from 'react-router'
 function Header() {
   return (
   <>
