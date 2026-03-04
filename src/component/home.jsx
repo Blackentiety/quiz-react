@@ -11,7 +11,7 @@ const Home = () => {
   const canStart = selectedCat !== "" && selectedDiff !== "";
 
   const handleStart = () => {
-    navigate(`/quiz?category={selectedCat}&difficulties={selectedDiff}`);
+    navigate(`/quiz?category=${selectedCat}&difficulty=${selectedDiff}`);
   };
 
   return (
