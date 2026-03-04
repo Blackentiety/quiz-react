@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router";
 import { decodeHtmlEntities } from "../utils/decode.js";
+import styles from './quiz.module.css'
 
 const Quiz = () => {
   const [searchParams] = useSearchParams();
@@ -52,22 +53,22 @@ const Quiz = () => {
     }
   };
 
-  if (loading) return <p>Chargement des questions (L'API peut mettre 2min à vous débloquer)...</p>;
-  if (questions.length === 0) return <p>Erreur : aucune question trouvée.</p>;
+  if (loading) return <p className={styles.loading}>Chargement des questions (L'API peut mettre 2min à vous débloquer)...</p>;
+  if (questions.length === 0) return <p className={styles.error}>Erreur : aucune question trouvée.</p>;
 
   const currentQuestion = questions[currentIdx];
 
   return (
-      <div className="quiz-page">
+      <div className={styles.container}>
         {/* Gestion de l'avancement */}
-        <h3>Question {currentIdx + 1} / 10</h3>
+        <h3 className={styles.progress}>Question {currentIdx + 1} / 10</h3>
 
-        <div className="question-card">
-          <p>{decodeHtmlEntities(currentQuestion.question)}</p>
+        <div className={styles.questionCard}>
+          <p className={styles.question}>{decodeHtmlEntities(currentQuestion.question)}</p>
 
-          <div className="answers-grid">
+          <div className={styles.answersGrid}>
             {shuffledAnswers.map((answer, index) => (
-                <button key={index} onClick={() => handleAnswer(answer)}>
+                <button className={styles.answerButton} key={index} onClick={() => handleAnswer(answer)}>
                   {decodeHtmlEntities(answer)}
                 </button>
             ))}

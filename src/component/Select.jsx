@@ -1,6 +1,8 @@
+import styles from './Select.module.css'
+
 function Select({ setter, data, valueKey, labelKey, defaultText }) {
   return (
-    <select onChange={(e) => setter(e.target.value)}>
+    <select className={styles.select} onChange={(e) => setter(e.target.value)}>
       <option value="">-- {defaultText} --</option>
 
       {data.map((item) => (
@@ -11,4 +13,5 @@ function Select({ setter, data, valueKey, labelKey, defaultText }) {
     </select>
   );
 }
+
 export default Select;
