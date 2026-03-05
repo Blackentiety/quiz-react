@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from "react-router";
+import styles from './score.module.css'
 
 const Score = () => {
   const location = useLocation();
@@ -29,21 +30,21 @@ const Score = () => {
   }
   
   return (
-    <div className="score-container">
-      <h2>Quiz Terminé !</h2>
+    <div className={styles.container}>
+      <h2 className={styles.title}>Quiz Terminé !</h2>
       
-      <div className="score-display">
-        <h3>{message}</h3>
-        <p className="score-big">
+      <div className={styles.scoreDisplay}>
+        <h3 className={styles.message}>{message}</h3>
+        <p className={styles.scoreBig}>
           {finalScore} / 10
         </p>
-        <p className="score-percentage">
+        <p className={styles.scorePercentage}>
           {percentage}%
         </p>
       </div>
       
-      <div className="score-actions">
-        <button onClick={handleRestart}>
+      <div className={styles.actions}>
+        <button className={`${styles.button} ${styles.buttonPrimary}`} onClick={handleRestart}>
           Retour à l'accueil
         </button>
       </div>
