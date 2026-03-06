@@ -1,0 +1,270 @@
+.container {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px auto;
+  max-width: 600px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+  text-align: center;
+  color: white;
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.empty {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+  padding: 40px 20px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+}
+
+.table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.rank {
+  width: 60px;
+  text-align: center;
+}
+
+.player {
+  width: 40%;
+}
+
+.score {
+  width: 25%;
+  text-align: center;
+}
+
+.date {
+  width: 35%;
+  text-align: right;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.row {
+  animation: slideIn 0.3s ease-out;
+}
+
+.row.firstPlace {
+  background: linear-gradient(to right, rgba(255, 215, 0, 0.1) 0%, transparent 100%);
+}
+
+.row.secondPlace {
+  background: linear-gradient(to right, rgba(192, 192, 192, 0.1) 0%, transparent 100%);
+}
+
+.row.thirdPlace {
+  background: linear-gradient(to right, rgba(205, 127, 50, 0.1) 0%, transparent 100%);
+}
+
+.rankCell {
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 18px;
+  color: #333;
+}
+
+.playerCell {
+  padding: 12px 16px;
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scoreCell {
+  padding: 12px 16px;
+  text-align: center;
+}
+
+.scoreBadge {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.dateCell {
+  padding: 12px 16px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dateText {
+  font-size: 12px;
+  color: #666;
+}
+
+.timeText {
+  font-size: 11px;
+  color: #999;
+}
+
+.actions {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.clearButton {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.clearButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.confirmBox {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.confirmBox p {
+  color: #333;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.confirmYes,
+.confirmNo {
+  padding: 8px 16px;
+  margin: 0 8px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 13px;
+}
+
+.confirmYes {
+  background: #e74c3c;
+  color: white;
+}
+
+.confirmYes:hover {
+  background: #c0392b;
+  transform: translateY(-2px);
+}
+
+.confirmNo {
+  background: #95a5a6;
+  color: white;
+}
+
+.confirmNo:hover {
+  background: #7f8c8d;
+  transform: translateY(-2px);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 16px;
+    margin: 16px;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    padding: 10px 8px;
+  }
+
+  .dateCell {
+    display: none;
+  }
+
+  .score {
+    width: 40%;
+  }
+
+  .player {
+    width: 60%;
+  }
+
+  .scoreBadge {
+    padding: 3px 8px;
+    font-size: 11px;
+  }
+}

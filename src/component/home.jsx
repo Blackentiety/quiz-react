@@ -16,33 +16,33 @@ const Home = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Quiz App</h1>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Quiz App</h1>
 
-      <div className={styles.selectGroup}>
-        {/* Sélecteur de catégorie  */}
-        <Select
-          setter={setSelectedCat}
-          data={categories}
-          valueKey="id"
-          labelKey="name"
-          defaultText="Choisir une catégorie"
-        />
+        <div className={styles.selectGroup}>
+          {/* Sélecteur de catégorie  */}
+          <Select
+            setter={setSelectedCat}
+            data={categories}
+            valueKey="id"
+            labelKey="name"
+            defaultText="Choisir une catégorie"
+          />
 
-        {/* Sélecteur de difficulté */}
-        <Select
-          setter={setSelectedDiff}
-          data={difficulties}
-          valueKey="value"
-          labelKey="name"
-          defaultText="Choisir une difficulté"
-        />
+          {/* Sélecteur de difficulté */}
+          <Select
+            setter={setSelectedDiff}
+            data={difficulties}
+            valueKey="value"
+            labelKey="name"
+            defaultText="Choisir une difficulté"
+          />
+        </div>
+
+        <button className={styles.startButton} onClick={handleStart} disabled={!canStart}>
+          Démarrer le Quiz
+        </button>
       </div>
-
-      <button className={styles.startButton} onClick={handleStart} disabled={!canStart}>
-        Démarrer le Quiz
-      </button>
-    </div>
   );
 };
 
