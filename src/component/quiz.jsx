@@ -11,6 +11,9 @@ const Quiz = () => {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [timeLeft, setTimeLeft] = useState(10);
+  
+  const TIME_PER_QUESTION = 15; // Temps par question en secondes (modifiable: 8-12s)
 
   const cat = searchParams.get("category");
   const diff = searchParams.get("difficulty");
@@ -31,6 +34,25 @@ const Quiz = () => {
         .finally(() => setLoading(false)); // 🔑 Arrête le chargement quoi qu'il arrive
   }, [cat, diff]);
 
+  // Gestion du timer par question
+  useEffect(() => {
+    if (loading || questions.length === 0) return;
+
+    setTimeLeft(TIME_PER_QUESTION); // Réinitialiser le timer
+
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          handleTimeOut();
+          return TIME_PER_QUESTION;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval); // Nettoyage
+  }, [currentIdx, loading, questions.length]);
+
   // Mélange les réponses seulement quand la question change
   const shuffledAnswers = useMemo(() => {
     if (!questions[currentIdx]) return [];
@@ -38,6 +60,15 @@ const Quiz = () => {
     const all = [q.correct_answer, ...q.incorrect_answers];
     return all.sort(() => Math.random() - 0.5);
   }, [questions, currentIdx]);
+
+  const handleTimeOut = () => {
+    // Temps écoulé : question ratée, pas de point ajouté
+    if (currentIdx < 9) {
+      setCurrentIdx(currentIdx + 1);
+    } else {
+      navigate("/score", { state: { finalScore: score } });
+    }
+  };
 
   const handleAnswer = (answer) => {
     const isCorrect = answer === questions[currentIdx].correct_answer;
@@ -62,6 +93,13 @@ const Quiz = () => {
       <div className={styles.container}>
         {/* Gestion de l'avancement */}
         <h3 className={styles.progress}>Question {currentIdx + 1} / 10</h3>
+
+        {/* Timer visuel */}
+        <div className={styles.timerContainer}>
+          <div className={`${styles.timer} ${timeLeft <= 3 ? styles.timerUrgent : ''}`}>
+            ⏱️ {timeLeft}s
+          </div>
+        </div>
 
         <div className={styles.questionCard}>
           <p className={styles.question}>{decodeHtmlEntities(currentQuestion.question)}</p>
