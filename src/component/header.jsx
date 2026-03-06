@@ -6,7 +6,6 @@ function Header() {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <Link to="/">Accueil</Link>
-        <Link to="/quiz">Quiz</Link>
         <Link to="/score">Score</Link>
       </nav>
     </header>
